@@ -1,7 +1,12 @@
 Mrkt::Application.routes.draw do
+  devise_for :employers, :controllers => {:registrations => "employers/registrations"}
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
+  root :to => "initial#start"
 
+  resources :jobs
+  #resources :employers
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

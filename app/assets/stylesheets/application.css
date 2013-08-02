@@ -11,3 +11,16 @@
  *= require_self
  *= require_tree .
  */
+h1, h2 {
+	font-family:"Core Circus 2D In";
+	font-size: 400%;
+}
+
+html{
+	background: #D91448
+}
+
+button.initial{
+	margin: 20px;
+}
+

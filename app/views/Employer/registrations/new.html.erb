@@ -1,0 +1,45 @@
+<div class"signup-form">
+<h2>Sign up</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+    <div><%= f.label :company %><br />
+  <%= f.text_field :company, :autofocus => true %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.submit "Sign up", :class => "signup button button-rounded button-flat-primary button-large" %></div>
+<% end %>
+
+<%= render "Employer/shared/links" %>
+</div>
+<div class="newjob"></div>
+
+<script>
+$('form').submit( function(event){
+	alert('hello!')
+	event.preventDefault();
+	var company = $("input#employer_company").val();
+	var email = $("input#employer_email").val();
+	var dataString = 'company='+ company + '&email=' + email
+	$.ajax({  
+		type: "POST",  
+		url: "<%= employer_registration_url %>",  
+		data: dataString,  
+		success: function() { 
+			alert('hi!')
+			$('form').fadeOut(150, function(){
+				$('.newjob').load(<%= new_job_url %>).hide().fadeIn(500);
+			});  
+		});  
+	};  
+});  
+
+</script>

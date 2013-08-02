@@ -1,0 +1,13 @@
+<h1>Add Your First Listing</h1>
+<p>you're all signed up, but before you can start selecting members, you should add a hiring team so that users can see you</p>
+<%= form_for Job.new do |f| %>
+
+    <div><%= f.label :team_name, "Which team are you Hiring for?" %><br />
+  <%= f.text_field :team_name, :autofocus => true %></div>
+
+  <div><%= f.label :description %><br />
+  <%= f.text_area :description, :autofocus => true %></div>
+
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+
