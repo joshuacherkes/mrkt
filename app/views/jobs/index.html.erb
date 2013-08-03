@@ -1,0 +1,6 @@
+<ul data-role="listview">
+	<% @jobs.each do |job| %>
+		<li><a href="<%= edit_job_url(job) %>"><%= job.team_name %></a></li>
+	<% end %>
+</ul>
+<a href="<%= new_job_url %>" data-transition="slideup" data-role="button">Add Listing</a>

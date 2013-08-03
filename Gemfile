@@ -30,7 +30,8 @@ group :development do
 end
 
 gem 'ejs'
-
+gem 'jquery-rails'
+gem 'jquery_mobile_rails'
 gem 'backbone-on-rails'
 gem 'devise'
 # To use ActiveModel has_secure_password

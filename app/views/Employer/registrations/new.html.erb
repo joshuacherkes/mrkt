@@ -23,23 +23,23 @@
 <div class="newjob"></div>
 
 <script>
-$('form').submit( function(event){
-	alert('hello!')
-	event.preventDefault();
-	var company = $("input#employer_company").val();
-	var email = $("input#employer_email").val();
-	var dataString = 'company='+ company + '&email=' + email
-	$.ajax({  
-		type: "POST",  
-		url: "<%= employer_registration_url %>",  
-		data: dataString,  
-		success: function() { 
-			alert('hi!')
-			$('form').fadeOut(150, function(){
-				$('.newjob').load(<%= new_job_url %>).hide().fadeIn(500);
-			});  
-		});  
-	};  
-});  
+// $('form').submit( function(event){
+// 	alert('hello!')
+// 	event.preventDefault();
+// 	var company = $("input#employer_company").val();
+// 	var email = $("input#employer_email").val();
+// 	var dataString = 'company='+ company + '&email=' + email
+// 	$.ajax({  
+// 		type: "POST",  
+// 		url: "<%= employer_registration_url %>",  
+// 		data: dataString,  
+// 		success: function() { 
+// 			alert('hi!')
+// 			$('form').fadeOut(150, function(){
+// 				$('.newjob').load(<%= new_job_url %>).hide().fadeIn(500);
+// 			});  
+// 		});  
+// 	};  
+// });  
 
 </script>

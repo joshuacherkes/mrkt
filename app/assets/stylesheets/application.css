@@ -10,10 +10,12 @@
  *
  *= require_self
  *= require_tree .
+ *= require jquery.mobile
  */
-h1, h2 {
+/*h1 {
 	font-family:"Core Circus 2D In";
-	font-size: 400%;
+	font-size: 20vw;
+	text-wrap: normal;
 }
 
 html{
@@ -21,6 +23,12 @@ html{
 }
 
 button.initial{
-	margin: 20px;
+	margin: 10px;
+	width: 90vw;
 }
 
+h2 {
+	font-family:"Core Circus 2D In";
+	font-size: 10vw;
+}
+*/

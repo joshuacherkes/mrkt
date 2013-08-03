@@ -1,33 +1,29 @@
 <body>
 <div class='home'>
-<h1 style="font:Core Circus 2D In;"> Welcome <br> to <br> MRKT</h1>
-<button id="seeker" class="initial button button-rounded button-flat-primary button-large">I am a Job Seeker</button>
+<h1 style="font:Core Circus 2D In;"> Join <br> the <br> MRKT</h1>
+<button id="seeker">I am a Job Seeker</button>
 <br>
-<button id="employer" class="initial button button-rounded button-flat-primary button-large"> I'm Hiring</button>
+<button id="employer"> I'm Hiring</button>
 </div>
 <div class="signup">
 </div>
 </body>
 <script>
-$('#employer').click( function(){
-	event.preventDefault()
-$('.signup').load("<%= new_employer_registration_url%>").hide();
-$('.home').fadeOut(250, function(){
-	$('.signup').fadeIn(500);
-	});
+// $('#employer').click( function(){
+// 	event.preventDefault()
+// 	$('.signup').load("<%= new_employer_registration_url%>").hide();
+// 	$('.home').fadeOut(250, function(){
+// 		$('.signup').fadeIn(500);
+// 	});
+// });
 
-
-});
-
-$('#seeker').click( function(event){
-	event.preventDefault()
-$('.signup').load("<%= new_employer_registration_url%>").hide();
-$('.home').fadeOut(250, function(){
-	$('.signup').fadeIn(500);
-	});
-
-
-});
+// $('#seeker').click( function(event){
+// 	event.preventDefault()
+// 	$('.signup').load("<%= new_employer_registration_url%>").hide();
+// 	$('.home').fadeOut(250, function(){
+// 		$('.signup').fadeIn(500);
+// 	});
+// });
 
 </script>
 

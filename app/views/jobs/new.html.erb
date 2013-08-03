@@ -1,13 +1,33 @@
+<body>
 <h1>Add Your First Listing</h1>
 <p>you're all signed up, but before you can start selecting members, you should add a hiring team so that users can see you</p>
-<%= form_for Job.new do |f| %>
 
-    <div><%= f.label :team_name, "Which team are you Hiring for?" %><br />
-  <%= f.text_field :team_name, :autofocus => true %></div>
+<form action="<%= jobs_url%>" method="post">
+	<label for="job[team_name]">Which team are you Hiring for?</label>
+	<input type="text" name="job[team_name]">
+	<label for"job[description]">Nobody wants to work for a lame team, why is your's awesome?</label>
+	<textarea name="job[description]"></textarea>
 
-  <div><%= f.label :description %><br />
-  <%= f.text_area :description, :autofocus => true %></div>
+	<% @skills.each do |skill| %>
+		<% html_id = "job_skill_ids_#{skill.id}" %>
+		<label for="<%= html_id %>">
+			<%= skill.title %>
+		</label>
+		<input 
+		type="checkbox"
+		name="job[skill_ids][]"
+		value="<%= skill.id %>"
+		id="<%= html_id %>">
+		<% end %>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+	<h2> Skill not listed?</h2>
+	<p>that's ok, type all the skills you need below</p>
+	<%# skill partial will go in here %>
+	<%= render :partial => "skills" %>
+
+
+	<input type="submit" value="Add Listing">
+</form>
+<body>
+
 

@@ -1,0 +1,24 @@
+<ul id="listview" data-role="listview">
+	<li>
+		<!-- <div data-role="fieldcontain"> -->
+			<!-- <label for="job_skills_attributes_0_title">Custom Skill</label> -->
+			<input 
+			type="text" 
+			name="job[skills_attributes][0][title]"
+			id="job_skills_attributes_0_title">
+		<!-- </div> -->	
+	</li>
+</ul>
+<a data-role="button" id="add_element">Add Another Skill</a>
+<script type="text/javascript">
+$('#add_element').click(function () {
+    var list = $('ul[data-role="listview"]');
+    var nextLi = ((list.children().length));
+    li = "<li><input type='text' id='job_skills_attributes_" + nextLi + "_title' name='job[skills_attributes][" + nextLi + "][title]'></li>";
+    list.append(li);
+    list.listview('refresh');
+    $('#listview').trigger('create');
+
+});
+</script>
+
