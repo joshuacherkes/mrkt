@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require jquery.mobile
 //= require_tree .
+//= require tags/jquery.tagcloud.js

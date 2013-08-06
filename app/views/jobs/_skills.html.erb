@@ -4,18 +4,28 @@
 			<!-- <label for="job_skills_attributes_0_title">Custom Skill</label> -->
 			<input 
 			type="text" 
-			name="job[skills_attributes][0][title]"
+			name="skills_attributes[0][title]"
 			id="job_skills_attributes_0_title">
+			<input type="range" 
+			name="jobskills_attributes[0][intensity]" 
+			id="job_skills_attributes_0_intensity" 
+			value="5" 
+			min="0" 
+			max="10"
+			data-highlight='true'>
 		<!-- </div> -->	
 	</li>
 </ul>
 <a data-role="button" id="add_element">Add Another Skill</a>
 <script type="text/javascript">
+//Adds a new skill element on click
 $('#add_element').click(function () {
     var list = $('ul[data-role="listview"]');
     var nextLi = ((list.children().length));
-    li = "<li><input type='text' id='job_skills_attributes_" + nextLi + "_title' name='job[skills_attributes][" + nextLi + "][title]'></li>";
-    list.append(li);
+    var li = "<li><input type='text' id='job_skills_attributes_" + nextLi + "_title' name='skills_attributes[" + nextLi + "][title]'>";
+    var slider = "<input type='range' id='job_skills_attributes_" + nextLi + "_intensity' name='jobskills_attributes[" + nextLi + "][intensity]' max='10' min='0' value='5' data-highlight='true'></li>";
+    var insert = li + slider
+    list.append(insert);
     list.listview('refresh');
     $('#listview').trigger('create');
 

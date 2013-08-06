@@ -1,6 +1,6 @@
 class Job < ActiveRecord::Base
 	attr_accessible :employer_id, :team_name, :description, 
-	:team_photo, :skills_attributes, :skill_ids, :filepicker_url 
+	:team_photo, :skills_attributes, :skill_ids, :filepicker_url
 
 	validates :team_name, :description, :presence => true
 

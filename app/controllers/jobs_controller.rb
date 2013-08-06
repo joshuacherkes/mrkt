@@ -2,17 +2,30 @@ class JobsController < ApplicationController
 	before_filter :authenticate_employer!
 	include ApplicationHelper
 	def new
-		@job = Job.new
-		@skills = Skill.all
-		render :new
+		if current_employer.jobs.length > 0
+			render :new
+		else
+			render :first
+		end
 	end
 
 	def create
+		#create job
 		@employer = current_employer
 		@job = Job.new(params[:job])
 		@job.employer_id = @employer.id
-		@job.team_photo = URI.parse(@job.filepicker_url + "+name.jpeg")
+		if @job.filepicker_url != ""
+			@job.team_photo = URI.parse(@job.filepicker_url + "+name.jpeg")
+		end
+
+		#create jobskills and save
 		if @job.save
+			params[:skills_attributes].values.each_with_index do |skill, index|
+				made_skill = Skill.create!(skill)
+				Jobskill.create!({job_id: @job.id, 
+					skill_id: made_skill.id, 
+					intensity: params[:jobskills_attributes]["#{index}"][:intensity]})
+			end
 			redirect_to jobs_url
 		else
 
@@ -46,7 +59,7 @@ class JobsController < ApplicationController
 
 	def show
 		@job = Job.includes(:jobskills).find(params[:id])
-		@jobskills = @job.jobskills
+		@jobskills = @job.jobskills.includes(:skill)
 		render :show
 	end
 
