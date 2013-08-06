@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130803161247) do
+ActiveRecord::Schema.define(:version => 20130806015245) do
 
   create_table "employers", :force => true do |t|
     t.string   "company",                                :null => false
@@ -35,15 +35,20 @@ ActiveRecord::Schema.define(:version => 20130803161247) do
   add_index "employers", ["reset_password_token"], :name => "index_employers_on_reset_password_token", :unique => true
 
   create_table "jobs", :force => true do |t|
-    t.integer "employer_id"
-    t.string  "team_name"
-    t.text    "description"
-    t.string  "team_photo"
+    t.integer  "employer_id"
+    t.string   "team_name"
+    t.text     "description"
+    t.string   "filepicker_url"
+    t.string   "team_photo_file_name"
+    t.string   "team_photo_content_type"
+    t.integer  "team_photo_file_size"
+    t.datetime "team_photo_updated_at"
   end
 
   create_table "jobskills", :force => true do |t|
     t.integer "skill_id"
     t.integer "job_id"
+    t.integer "intensity"
   end
 
   create_table "skills", :force => true do |t|

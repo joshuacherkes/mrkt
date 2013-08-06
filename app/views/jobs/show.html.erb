@@ -1,0 +1,11 @@
+<h1><%= @job.team_name %> @ <%= @job.employer.company %></h1>
+<img src="<%= @job.team_photo.url(:medium) %>">
+<h2>We're Looking for:</h2>
+<div class="skill-cloud">
+	<% @job.skills.each do |skill| %>
+	<li data-weight="<%= skill.intensity %>"><%= skill.title %></li>
+	<% end -%>
+</div>
+
+<h2>Why Should you work there?</h2>
+<p><%= @job.description %></p>

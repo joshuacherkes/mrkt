@@ -1,13 +1,13 @@
-<body>
 <h1>Add Your First Listing</h1>
 <p>you're all signed up, but before you can start selecting members, you should add a hiring team so that users can see you</p>
 
 <form action="<%= jobs_url%>" method="post">
-	<label for="job[team_name]">Which team are you Hiring for?</label>
+	<h2><label for="job[team_name]">Which team are you Hiring for?</label></h2>
 	<input type="text" name="job[team_name]">
-	<label for"job[description]">Nobody wants to work for a lame team, why is your's awesome?</label>
+	<h2><label for"job[description]">Nobody wants to work for a lame team, why is your's awesome?</label></h2>
 	<textarea name="job[description]"></textarea>
 
+	<p> Add the skills that your team is looking for in a candidate, these can be as general or specific as you want</p>
 	<% @skills.each do |skill| %>
 		<% html_id = "job_skill_ids_#{skill.id}" %>
 		<label for="<%= html_id %>">
@@ -25,9 +25,24 @@
 	<%# skill partial will go in here %>
 	<%= render :partial => "skills" %>
 
-
+	<h2> Add a cool photo (optional)</h2>
+	<p>Cool coffee maker at the office? show it off! whatever makes either your people or your space stand out use it or lose it!</p>
+	<div class="photo-name"></div>
+	<%= fields_for :job do |file| %>
+	<div data-roll="controlgroup">
+		<%= file.filepicker_field :filepicker_url, 
+		:onchange => "$('.photo-name').html('<p>' + event.fpfile.filename + ' successfully uploaded</p>');",
+		:button_class => "fpbutton", :extensions => ".jpeg,.jpg"  %>
+	</div>
+	<% end %>`
 	<input type="submit" value="Add Listing">
 </form>
-<body>
 
+<script>
+$(document).ready(function(){
+	$('.fpbutton').attr("data-role", "button");
+	$('.fpbutton').button();
+	$('.fpbutton').buttonMarkup();
+});
 
+</script>

@@ -1,7 +1,13 @@
 class Job < ActiveRecord::Base
-	attr_accessible :employer_id, :team_name, :description, :team_photo, :skills_attributes, :skill_ids 
+	attr_accessible :employer_id, :team_name, :description, 
+	:team_photo, :skills_attributes, :skill_ids, :filepicker_url 
 
 	validates :team_name, :description, :presence => true
+
+	has_attached_file :team_photo, :styles => {
+		:medium => "300x300>", 
+		:thumb => "100x100>"
+	}
 
 	belongs_to :employer
 
