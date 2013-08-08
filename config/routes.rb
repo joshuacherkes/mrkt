@@ -1,5 +1,5 @@
 Mrkt::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   devise_for :employers, :controllers => {:registrations => "employers/registrations"}
 
@@ -8,6 +8,7 @@ Mrkt::Application.routes.draw do
   root :to => "initial#start"
 
   resources :jobs
+  resources :profiles
   #resources :employers
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

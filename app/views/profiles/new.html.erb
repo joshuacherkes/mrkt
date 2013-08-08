@@ -1,0 +1,151 @@
+
+<form id="new-profile-form" action="<%= profiles_url%>" method="post">
+
+	<div data-role="page" id="name">
+	<h1>
+		You're all signed up!
+	</h1>
+	<p>
+		now, you can build out your profile, if you would like to save some time, you can import your public profile from github as well
+	</p>
+		<%= render :partial => "name" %>
+		<a href="#skills" data-role="button">Now add some skills</a>
+	</div>
+
+	<div data-role="page" id="skills">
+		<h1>You got skillz</h1>
+		<p>Your MRKT profile can be summed up as "what you know and who you've worked for" here you can add your skills, these can be as specific or general as you would like, and you can add unlimited skills</p>
+		<%= render :partial => "skills" %>
+		<a href="#companies" data-role="button">Next step: Companies</a>
+	</div>
+
+	<div data-role="page" id="companies">
+		<h1>Work it Baby</h1>
+		<p>Worked for Barack Obama? tell us, use the slider to indicate years</p>
+		<%= render :partial => "companies" %>
+		<a href="#description" data-role="button">Next step: Description</a>
+	</div>
+
+	<div data-role="page" id="description">
+		<h1>What is the coolest thing you've done?</h1>
+		<p>Noody reads long resumes. Instead of boring employers to death, you can use this space to describe the <em>coolest, awesomest</em> accomplishment in your career.</p>
+		<%= render :partial => "description" %>
+		<input type="submit" value="Finish Profile">
+	</div>
+
+
+
+<script>
+	
+
+
+	$(document).on('pageinit', function(){
+	$.validator.setDefaults({
+		debug: true,
+		onsubmit: false,
+
+	});
+
+	$('#new-profile-form').validate({
+		onfocusout: function(element) {$(element).valid()}, 
+		rules: {
+			"profile[name]": "required",
+			"profile[tagline]": "required",
+			"profile[description]": "required"
+		},
+
+		messages: {
+			"profile[name]": {required: "Please enter a name"},
+			"profile[tagline]": {required: "C'mon, taglines are fun!"},
+			"profile[description]": {required: "You can't expect anyone to hire you without at least telling them something..."}
+
+		}, 
+		errorPlacement: function(error, element) {
+			console.log($(element));
+			if(element.attr('name')=="profile[description]"){
+				error.insertAfter(element);
+			}
+			else{
+				error.insertAfter(element.parent());				
+			}
+			}
+	});
+
+	$("[type='submit']").on('click', function(event){
+		
+		if($("#new-profile-form").valid()){
+			//do nothing
+		}
+		else{
+			console.log('got here')
+			$.mobile.loading('show', 
+				{text: "Please fill out all required fields", 
+				textVisible: true
+			})
+			event.preventDefault();
+			var wait = setTimeout(function() {
+				$.mobile.loading('hide')
+    }, 2000);
+
+		}
+	});
+	$("[href='#skills']").on('click', function(event){
+		
+		if($("#new-profile-form").valid()){
+			//do nothing
+		}
+		else{
+			console.log('got here')
+			$.mobile.loading('show', 
+				{text: "Please fill out all required fields", 
+				textVisible: true
+			})
+			event.preventDefault();
+			var wait = setTimeout(function() {
+				$.mobile.loading('hide')
+    }, 2000);
+
+		}
+	});
+
+	$('#description').on('pageshow', function(){
+		$('#description-box').focus();
+	});
+
+
+// this function is used to block the user from submitting invalid fields 
+var default_msg = $.mobile.loadingMessage;
+var custom_error_msg = function(msg,delay,theme) {
+  if (typeof(delay)==='undefined') {
+    var delay = 3500; // in milliseconds
+  }
+  if (typeof(theme)==='undefined') {
+    var theme = 'e'; // default theme; setting this to 'e' is nice for error messages
+  }
+  var css_class = '';
+  if (theme ==='e') {
+    css_class = 'ui-body-e';
+  }
+  $.mobile.loadingMessage = msg;
+  console.log(msg);
+  $.mobile.showPageLoadingMsg();
+  $(".ui-loader").addClass(css_class).find(".spin:visible").hide(); // hide the spinner graphic
+  setTimeout(
+    function() {
+      $(".ui-loader").removeClass(css_class).find(".spin:hidden").show(); // show the spinner graphic when we are done
+      // $.mobile.hidePageLoadingMsg();
+      $.mobile.loadingMessage = default_msg; // reset back to default message
+    }, 
+    delay
+  );
+};
+
+
+
+
+
+});
+
+</script>
+
+

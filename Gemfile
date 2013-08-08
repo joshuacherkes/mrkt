@@ -9,6 +9,9 @@ gem 'sqlite3'
 gem 'filepicker-rails'
 gem "paperclip"
 gem "aws-sdk"
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-facebook'
 
 
 # Gems used only for assets and not required

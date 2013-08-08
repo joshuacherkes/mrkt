@@ -1,0 +1,37 @@
+<h1>Edit Your Listing</h1>
+
+
+<form action="<%= job_url(@job)%>" method="post">
+	<input type=hidden name="_method" value="put">
+	<label for="job[team_name]">Which team are you Hiring for?</label>
+	<input type="text" name="job[team_name]" value="<%= @job.team_name %> ">
+	<label for"job[description]">Nobody wants to work for a lame team, why is your's awesome?</label>
+	<textarea name="job[description]"><%= @job.description %></textarea>
+
+	<% @skills.each do |skill| %>
+		<% html_id = "job_skill_ids_#{skill.id}" %>
+		<label for="<%= html_id %>">
+			<%= skill.title %>
+		</label>
+		<input 
+		type="checkbox"
+		name="job[skill_ids][]"
+		value="<%= skill.id %>"
+		id="<%= html_id %>"
+		checked>
+
+		<% end %>
+
+	<h2> Skill not listed?</h2>
+	<p>that's ok, type all the skills you need below</p>
+	<%# skill partial will go in here %>
+	<%= render :partial => "skills" %>
+
+
+	<input type="submit" value="Done">
+</form>
+
+<form action="<%= job_url(@job) %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete Listing">
+</form>

@@ -15,3 +15,4 @@
 //= require jquery.mobile
 //= require_tree .
 //= require tags/jquery.tagcloud.js
+//= require jquery.validate

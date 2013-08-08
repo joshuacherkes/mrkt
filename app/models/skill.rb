@@ -2,6 +2,8 @@ class Skill < ActiveRecord::Base
 	attr_accessible :title, :jobskills_attributes
 
 	has_many :jobskills
+	has_many :profileskills
+	has_many :profiles, :through => :profileskills
 
 	has_many :jobs, :through => :jobskills
 

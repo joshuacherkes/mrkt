@@ -1,0 +1,44 @@
+<form action="<%= profiles_url%>" method="post">
+	<div data-role="page" id="name-and-tagline">
+	<h2><label for="profile[name]">What is your name?</label></h2>
+	<input type="text" name="job[team_name]">
+
+	<h2><label for="profile[name]">Give yourself a tagline</label></h2>
+	<input type="text" name="job[team_name]" value="Example: JS extraordinare & zen rubyist">
+	<a href="#skills" value="Now Add some Skills">Skills</a>
+	</div>
+
+<!-- 	<h2>
+		<label for"profile[description]">
+			What is the coolest thing you've done?
+		</label>
+	</h2>
+	<textarea name="profile[description]">Noody reads long resumes. Instead of boring employers to death, you can use this space to describe the <em>coolest, awesomest</em> accomplishment in your career.</textarea> -->
+
+	<div data-role="page" id="skills">
+		<h2> Skills</h2>
+		<p>Add the skills that your team is looking for in a candidate, these can be as general or specific as you want</p>
+		<%# skill partial will go in here %>
+		<%= render :partial => "skills" %>
+	</div>
+
+<!-- 	<h2> Add a cool photo (optional)</h2>
+	<p>Cool coffee maker at the office? show it off! whatever makes either your people or your space stand out use it or lose it!</p>
+	<div class="photo-name"></div>
+	<%= fields_for :job do |file| %>
+		<%= file.filepicker_field :filepicker_url, 
+		:onchange => "$('.photo-name').html('<p>' + event.fpfile.filename + ' successfully uploaded</p>');",
+		:button_class => "fpbutton", :extensions => ".jpeg,.jpg"  %>
+	<% end %>
+	<input type="submit" value="Add something"> -->
+</form>
+
+<script>
+$(document).ready(function(){
+	var that = this;
+	$('.fpbutton').attr("data-role", "button");
+	$('.fpbutton').button();
+	$('.fpbutton').buttonMarkup();
+
+});
+</script>

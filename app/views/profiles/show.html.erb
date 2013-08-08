@@ -1,0 +1,33 @@
+<h1><%= @profile.name %></h1>
+<!-- <h2><%#= @profile.tagline %></h2>
+ -->
+<h2>My Skills:</h2>
+<div class="skill-cloud">
+	<ul class="skill-cloud">
+	<% @profileskills.each do |profileskill| %>
+	<li data-weight="<%= profileskill.intensity %>"><%= profileskill.skill.title %></li>
+	<% end -%>
+	</ul>
+</div>
+
+<h2>Hi there!</h2>
+<p><%= @profile.description %></p>
+
+
+
+
+
+<script>
+$(document).ready(function(){
+	$.fn.tagcloud.defaults = {
+		size: {start: 14, end: 18, unit: 'pt'},
+		color: {start: '#cde', end: '#f52'}
+	};
+    $(function () {
+      $('.skill-cloud li').tagcloud();
+    });	
+
+})
+
+</script>
+	
