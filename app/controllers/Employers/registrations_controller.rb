@@ -1,4 +1,4 @@
-class Employer::RegistrationsController < Devise::RegistrationsController
+class Employers::RegistrationsController < Devise::RegistrationsController
   def new
     @employer = Employer.new
     render "employer/registrations/new"
