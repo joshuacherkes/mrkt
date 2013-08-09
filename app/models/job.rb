@@ -1,24 +1,29 @@
 class Job < ActiveRecord::Base
-	attr_accessible :employer_id, :team_name, :description, 
-	:team_photo, :skills_attributes, :skill_ids, :filepicker_url
+  attr_accessible :employer_id, :team_name, :description, 
+  :team_photo, :skills_attributes, :skill_ids, :filepicker_url
 
-	validates :team_name, :description, :presence => true
+  validates :team_name, :description, :presence => true
 
-	has_attached_file :team_photo, :styles => {
-		:medium => "300x300>", 
-		:thumb => "100x100>"
-	}
+  has_attached_file :team_photo, :styles => {
+    :medium => "300x300>", 
+    :thumb => "100x100>"
+  }
 
-	belongs_to :employer
 
-	has_many :jobskills
+  belongs_to :employer
 
-	has_many :skills, :through => :jobskills
+  has_many :jobskills, :dependent => :destroy
 
-	accepts_nested_attributes_for :skills, :reject_if => :all_blank
+  has_many :userseenjobs
 
-	# def skills_attributes=(attributes)
+  has_many :matches
+
+  has_many :skills, :through => :jobskills
+
+  accepts_nested_attributes_for :skills, :reject_if => :all_blank
+
+  # def skills_attributes=(attributes)
  #    # Process the attributes hash
-	# end
+  # end
 
 end

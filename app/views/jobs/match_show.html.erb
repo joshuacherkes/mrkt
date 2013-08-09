@@ -1,11 +1,11 @@
-<h1><%= @job.team_name %> @ <%= @job.employer.company %></h1>
-<% if @job.team_photo.url(:medium) %>
+  <h1><%= @job.team_name %> @ <%= @job.employer.company %></h1>
+  <% if @job.team_photo.url(:medium) %>
   <img src="<%= @job.team_photo.url(:medium) %>">
   <% end -%>
-<h2>My Skills:</h2>
+<h2>Desired Skills</h2>
 <div class="skill-cloud">
   <ul class="skill-cloud">
-  <% @jobskills.each do |jobskill| %>
+  <% @job.jobskills.each do |jobskill| %>
   <li data-weight="<%= jobskill.intensity %>"><%= jobskill.skill.title %></li>
   <% end -%>
   </ul>
@@ -13,6 +13,17 @@
 
 <h2>Why Should you work there?</h2>
 <p><%= @job.description %></p>
+
+
+<div data-role="footer" data-id="foo1" data-position="fixed">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="<%= dislike_job_url(@job)  %>" data-icon="minus">Pass</a></li>
+      <li><a href="<%= like_job_url(@job) %>"  data-icon="check">Like</a></li>
+    </ul>
+  </div><!-- /navbar -->
+</div><!-- /footer -->
+
 
 
 

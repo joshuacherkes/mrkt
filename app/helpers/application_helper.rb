@@ -1,7 +1,7 @@
 module ApplicationHelper
-	
+  
 
-	IMPORANT_SKILLS = %w(
+  IMPORANT_SKILLS = %w(
 C
 Java
 Objective-C
@@ -19,7 +19,7 @@ R
 Go
 )
 
-	def skills
-		IMPORANT_SKILLS
-	end
+  def skills
+    IMPORANT_SKILLS
+  end
 end

@@ -1,13 +1,20 @@
 <h1><%= @profile.name %></h1>
-<!-- <h2><%#= @profile.tagline %></h2>
- -->
+<h2><%#= @profile.tagline %></h2>
 <h2>My Skills:</h2>
 <div class="skill-cloud">
-	<ul class="skill-cloud">
-	<% @profileskills.each do |profileskill| %>
-	<li data-weight="<%= profileskill.intensity %>"><%= profileskill.skill.title %></li>
-	<% end -%>
-	</ul>
+  <ul class="skill-cloud">
+  <% @profileskills.each do |profileskill| %>
+  <li data-weight="<%= profileskill.intensity %>"><%= profileskill.skill.title %></li>
+  <% end -%>
+  </ul>
+</div>
+<div class="company-cloud">
+  <h2> I've worked for</h2>
+  <ul class="company-cloud">
+  <% @profilecompanies.each do |profilecompany| %>
+  <li data-weight="<%= profilecompany.intensity %>"><%= profilecompany.company.name %></li>
+  <% end -%>
+  </ul>
 </div>
 
 <h2>Hi there!</h2>
@@ -19,15 +26,19 @@
 
 <script>
 $(document).ready(function(){
-	$.fn.tagcloud.defaults = {
-		size: {start: 14, end: 18, unit: 'pt'},
-		color: {start: '#cde', end: '#f52'}
-	};
+  $.fn.tagcloud.defaults = {
+    size: {start: 14, end: 18, unit: 'pt'},
+    color: {start: '#cde', end: '#f52'}
+  };
     $(function () {
       $('.skill-cloud li').tagcloud();
-    });	
+    });  
+
+    $(function () {
+      $('.company-cloud li').tagcloud();
+    });  
 
 })
 
 </script>
-	
+  

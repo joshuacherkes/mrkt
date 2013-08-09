@@ -1,6 +1,7 @@
+<div data-role="page" target="_blank"  data-ajax="false">
 <h2>Sign up</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= form_for(resource, :html=> {"data-ajax" => "false"}, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div><%= f.label :email %><br />
@@ -16,3 +17,11 @@
 <% end %>
 
 <%= render "users/shared/links" %>
+</div>
+
+<script>
+$(document).bind("mobileinit", function () {
+    $.mobile.ajaxEnabled = false;
+});
+
+</script>

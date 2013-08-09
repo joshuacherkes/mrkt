@@ -1,33 +1,42 @@
+<div id="companies-list">
 <ul id="companies" data-role="listview">
-	<li>
-		<!-- <div data-role="fieldcontain"> -->
-			<!-- <label for="job_skills_attributes_0_title">Custom Skill</label> -->
-			<input 
-			type="text" 
-			name="companies_attributes[0][name]"
-			id="profile_companies_attributes_0_name">
-			<input type="range" 
-			name="profilescompanies_attributes[0][intensity]" 
-			id="profile_companies_attributes_0_intensity" 
-			value="5" 
-			min="0" 
-			max="10"
-			data-highlight='true'>
-		<!-- </div> -->	
-	</li>
+  <li>
+    <!-- <div data-role="fieldcontain"> -->
+      <!-- <label for="job_skills_attributes_0_title">Custom Skill</label> -->
+      <input 
+      type="text"
+      class="company-input" 
+      name="companies_attributes[0][name]"
+      id="profile_companies_attributes_0_name">
+      <input type="range" 
+      name="profilescompanies_attributes[0][intensity]" 
+      id="profile_companies_attributes_0_intensity" 
+      value="5" 
+      min="0" 
+      max="10"
+      data-highlight='true'>
+    <!-- </div> -->  
+  </li>
 </ul>
-<a data-role="button" id="add_company_element">Add Another Company</a>
+</div>
+<div data-role="footer" data-position="fixed" data-tap-toggle="false"> 
+      <h1><a data-role="button" id="add_company_element">Add Another Company</a></h1>
+      <h1><a href="#description" data-role="button">Next step: Description</a></h1>
+</div> 
+
 <script type="text/javascript">
 //Adds a new skill element on click
 $('#add_company_element').click(function () {
     var list = $('ul[data-role="listview"]#companies');
     var nextLi = ((list.children().length));
-    var li = "<li><input type='text' id='profile_companies_attributes_" + nextLi + "_name' name='companies_attributes[" + nextLi + "][name]'>";
+    var li = "<li><input class='company-input' type='text' id='profile_companies_attributes_" + nextLi + "_name' name='companies_attributes[" + nextLi + "][name]'>";
     var slider = "<input type='range' id='profile_companies_attributes_" + nextLi + "_intensity' name='profilescompanies_attributes[" + nextLi + "][intensity]' max='10' min='0' value='5' data-highlight='true'></li>";
     var insert = li + slider
     list.append(insert);
     list.listview('refresh');
     $('#companies').trigger('create');
+     $('body').animate({scrollTop: $('#companies-list').height()}, 200);
+
 
 });
 </script>

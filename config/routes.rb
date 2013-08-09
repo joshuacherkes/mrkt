@@ -7,8 +7,22 @@ Mrkt::Application.routes.draw do
   # first created -> highest priority.
   root :to => "initial#start"
 
-  resources :jobs
-  resources :profiles
+  resources :jobs do
+    get 'like', :on => :member
+    get 'dislike', :on => :member
+  end
+
+  resources :profiles do
+    get 'like', :on => :member
+    get 'dislike', :on => :member
+  end
+
+  resource :user, :only => [] do 
+    get 'match', :on => :member
+  end
+  resource :employer, :only => [] do 
+    get 'match', :on => :member
+  end
   #resources :employers
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

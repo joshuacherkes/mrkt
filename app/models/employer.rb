@@ -8,7 +8,11 @@ class Employer < ActiveRecord::Base
 
   validates :email, :uniqueness => true
 
-  has_many :jobs
+  has_many :jobs, :dependent => :destroy
+
+  has_many :matches
+
+  has_many :employerseenprofiles
   
   
 end

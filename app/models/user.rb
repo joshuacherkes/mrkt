@@ -6,6 +6,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
    attr_accessible :email, :password, :password_confirmation
 
-   has_one :profile 
+   has_many :userseenjobs 
+   has_many :seenjobs, :through => :userseenjobs, :source => :job
+
+   has_many :matches
+
+   has_one :profile, :dependent => :destroy 
    has_many :skills, :through => :profile
 end

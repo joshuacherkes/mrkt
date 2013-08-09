@@ -1,34 +1,50 @@
+<div id="skills-list">
 <ul id="listview" data-role="listview">
-	<li>
-		<!-- <div data-role="fieldcontain"> -->
-			<!-- <label for="job_skills_attributes_0_title">Custom Skill</label> -->
-			<input 
-			type="text" 
-			name="skills_attributes[0][title]"
-			id="profile_skills_attributes_0_title">
-			<input type="range" 
-			name="profileskills_attributes[0][intensity]" 
-			id="profile_skills_attributes_0_intensity" 
-			value="5" 
-			min="0" 
-			max="10"
-			data-highlight='true'>
-		<!-- </div> -->	
-	</li>
+  <li>
+    <!-- <div data-role="fieldcontain"> -->
+      <!-- <label for="job_skills_attributes_0_title">Custom Skill</label> -->
+      <input 
+      type="text" 
+      class="skill-input"
+      name="skills_attributes[0][title]"
+      id="profile_skills_attributes_0_title">
+      <input type="range" 
+      name="profileskills_attributes[0][intensity]" 
+      id="profile_skills_attributes_0_intensity" 
+      value="5" 
+      min="0" 
+      max="10"
+      data-highlight='true'>
+    <!-- </div> -->  
+  </li>
 </ul>
-<a data-role="button" id="add_skill_element">Add Another Skill</a>
+</div>
+<div data-role="footer" data-position="fixed" data-tap-toggle="false"> 
+      <h1><a data-role="button" id="add_skill_element">Add Another Skill</a></h1>
+      <h1><a href="#companies" data-role="button">Next step: Companies</a></h1>
+</div> 
+
 <script type="text/javascript">
 //Adds a new skill element on click
 $('#add_skill_element').click(function () {
     var list = $('ul[data-role="listview"]#listview');
     var nextLi = ((list.children().length));
-    var li = "<li><input type='text' id='profile_skills_attributes_" + nextLi + "_title' name='skills_attributes[" + nextLi + "][title]'>";
+    var li = "<li><input type='text' class='skill-input' id='profile_skills_attributes_" + nextLi + "_title' name='skills_attributes[" + nextLi + "][title]'>";
     var slider = "<input type='range' id='profile_skills_attributes_" + nextLi + "_intensity' name='profileskills_attributes[" + nextLi + "][intensity]' max='10' min='0' value='5' data-highlight='true'></li>";
     var insert = li + slider
     list.append(insert);
     list.listview('refresh');
     $('#listview').trigger('create');
 
+  $('body').animate({scrollTop: $('#skills-list').height()}, 200);
+
+
 });
+
+//is at least one skill filled? 
+
 </script>
+
+
+
 
