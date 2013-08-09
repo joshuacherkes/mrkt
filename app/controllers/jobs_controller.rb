@@ -37,6 +37,7 @@ class JobsController < ApplicationController
 
   def index
     @jobs = current_employer.jobs
+    render :index
   end
 
   def destroy
