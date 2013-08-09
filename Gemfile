@@ -5,7 +5,6 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem 'filepicker-rails'
 gem "paperclip"
 gem "aws-sdk"
@@ -31,8 +30,13 @@ gem 'jquery-rails'
 
 
 group :development do
+  gem 'sqlite3'
   gem "better_errors"
   gem "binding_of_caller"
+end
+
+group :production do
+  gem 'pg'
 end
 
 gem 'ejs'

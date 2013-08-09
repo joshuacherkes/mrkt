@@ -9,8 +9,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     
     def after_sign_in_path_for(user)
-    profile_url(user)
-  end
+      match_user_url
+    end
 
     def create
       build_resource(sign_up_params)
