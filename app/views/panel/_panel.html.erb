@@ -1,0 +1,13 @@
+<div data-role="panel" id="panel">
+<% if current_user %>
+<a href="<%= destroy_user_session_url %>">Signout</a>
+<a href="<%=  match_user_url %>"> Find Jobs</a>
+<% elsif current_employer %>
+<a href="<%= destroy_employer_session_url %>">Signout</a>
+<a href="<%=jobs_url %>">All Jobs</a>
+<a href="<%=  match_employer_url %>"> Find Candidates</a>
+<% else %>
+<a href="<%= new_user_session_url %>">User Signin</a>
+<a hred=" <%= new_employer_session_url %>">Employer Signin</a>
+<% end -%>
+ </div><!-- /panel -->

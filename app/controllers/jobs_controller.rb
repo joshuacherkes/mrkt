@@ -27,7 +27,7 @@ class JobsController < ApplicationController
           skill_id: made_skill.id, 
           intensity: params[:jobskills_attributes]["#{index}"][:intensity]})
       end
-      redirect_to jobs_url
+      redirect_to dashboard_employer_url
     else
 
         flash.notice = "Submission failed. Please fix the errors below."

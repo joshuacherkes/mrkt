@@ -1,0 +1,34 @@
+<div data-role="page">
+<h1>Welcome, <%= @employer.company %></h1>
+
+<h2>Would you like to:</h2>
+<a data-role="button" href="<%= match_employer_url %>" id="find-candidates">Find Candidates</a>
+<br>
+<a data-role="button" href="<%= new_job_url %>" id="add-a-job">Add a Job</a>
+<br>
+<a data-role="button" href="<%= jobs_url %>" id="manage-jobs">Manage Jobs</a>
+<div class="content">
+<br>
+<a data-role="button" href="<%= destroy_employer_session_url %>" id="edit-profile">Sign Out</a>
+</div>
+</div>
+
+
+<script>
+// $('#find-a-job').click( function(){
+//   event.preventDefault()
+//   $('.content').load("<%= new_employer_registration_url%>").hide();
+//   $('.home').fadeOut(250, function(){
+//     $('.content').fadeIn(500);
+//   });
+// });
+
+// $('#edit-your-profile').click( function(event){
+//   event.preventDefault()
+//   $('.content').load("<%=  new_user_registration_url%>").hide();
+//   $('.home').fadeOut(250, function(){
+//     $('.content').fadeIn(500);
+//   });
+// });
+
+</script>

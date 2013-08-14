@@ -1,0 +1,32 @@
+<div data-role="page">
+<h1>Welcome, <%= @user.profile.name %></h1>
+
+<h2>Would you like to:</h2>
+<a data-role="button" href="<%= match_user_url %>" id="find-a-job">Find a Job</a>
+<br>
+<a data-role="button" href="<%= edit_profile_url(@user.profile) %>" id="edit-profile">Edit Your profile</a>
+<br>
+<a data-role="button" href="<%= destroy_user_session_url %>" id="edit-profile">Sign Out</a>
+<div class="content">
+</div>
+</div>
+
+
+<script>
+// $('#find-a-job').click( function(){
+//   event.preventDefault()
+//   $('.content').load("<%= new_employer_registration_url%>").hide();
+//   $('.home').fadeOut(250, function(){
+//     $('.content').fadeIn(500);
+//   });
+// });
+
+// $('#edit-your-profile').click( function(event){
+//   event.preventDefault()
+//   $('.content').load("<%=  new_user_registration_url%>").hide();
+//   $('.home').fadeOut(250, function(){
+//     $('.content').fadeIn(500);
+//   });
+// });
+
+</script>

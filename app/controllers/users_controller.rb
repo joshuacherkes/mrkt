@@ -11,9 +11,14 @@ class UsersController < ApplicationController
 		if @job
 			render "jobs/match_show"
 		else
-			render :nothing => true
+			render "jobs/nomore"
 		end
 
+	end
+
+
+	def dashboard
+		@user = current_user
 	end
 
 

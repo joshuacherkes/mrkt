@@ -9,7 +9,7 @@ class Employers::RegistrationsController < Devise::RegistrationsController
   end
   
   def after_sign_in_path_for(employer)
-    jobs_url
+    dashboard_employer_url
   end
 
 

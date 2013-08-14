@@ -1,7 +1,8 @@
-
 <form id="new-profile-form" action="<%= profiles_url%>" method="post">
 
   <div data-role="page" id="name">
+        <a href="#panel">Open panel</a>
+
   <h1>
     You're all signed up!
   </h1>
@@ -9,10 +10,13 @@
     now, you can build out your profile, if you would like to save some time, you can import your public profile from github as well
   </p>
     <%= render :partial => "name" %>
-    
+    <%= render :partial => "panel/panel" %>
+
   </div>
 
   <div data-role="page" id="skills">
+            <a href="#skill#panel">Open panel</a>
+
     <h1>You got skillz</h1>
     <p>Your MRKT profile can be summed up as "what you know and who you've worked for" here you can add your skills, these can be as specific or general as you would like, and you can add unlimited skills</p>
     <%= render :partial => "skills" %>
@@ -20,16 +24,23 @@
   </div>
 
   <div data-role="page" id="companies">
+        <a href="#panel">Open panel</a>
+
     <h1>Work it Baby</h1>
     <p>Worked for Barack Obama? tell us, use the slider to indicate years</p>
     <%= render :partial => "companies" %>
-    
+    <%= render :partial => "panel/panel" %>
+
   </div>
 
   <div data-role="page" id="description">
+        <a href="#panel">Open panel</a>
+
     <h1>What is the coolest thing you've done?</h1>
     <p>Noody reads long resumes. Instead of boring employers to death, you can use this space to describe the <em>coolest, awesomest</em> accomplishment in your career.</p>
     <%= render :partial => "description" %>
+    <%= render :partial => "panel/panel" %>
+
   </div>
 
 

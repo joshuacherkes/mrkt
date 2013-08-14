@@ -1,0 +1,11 @@
+<h1>No More Matches, Please check back later for more!</h1>
+
+<p> You will now be redirected to your dashboard</p>
+
+<a href="<%= dashboard_employer_url %>" style="display:none;"></a>
+
+<script>
+setTimeout(function() { 
+    window.location.href = $("a")[0].href; 
+ }, 4000);
+</script>

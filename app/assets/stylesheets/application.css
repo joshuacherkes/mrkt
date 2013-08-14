@@ -32,3 +32,9 @@ h2 {
   font-size: 10vw;
 }
 */
+
+
+li {
+	list-style-type: none;
+	display:inline;
+}

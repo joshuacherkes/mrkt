@@ -19,9 +19,12 @@ Mrkt::Application.routes.draw do
 
   resource :user, :only => [] do 
     get 'match', :on => :member
+    get 'dashboard', :on => :member
+
   end
   resource :employer, :only => [] do 
     get 'match', :on => :member
+    get 'dashboard', :on => :member
   end
   #resources :employers
   # Sample of regular route:

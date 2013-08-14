@@ -1,9 +1,11 @@
+
 <body>
 <div class='home'>
 <h1 style="font-family:Arimo;">Mrkt</h1>
-<button id="seeker" data-ajax="false">I am a Job Seeker</button>
+<a data-role="button" href="<%= new_user_registration_url %>" id="find-a-job">I'm a Job Seeker</a>
 <br>
-<button id="employer"  data-ajax="false"> I'm Hiring</button>
+<a data-role="button" href="<%= new_employer_registration_url %>" id="edit-profile">I'm Hiring</a>
+
 </div>
 <div class="signup">
 </div>
@@ -20,10 +22,11 @@ $('#employer').click( function(){
 $('#seeker').click( function(event){
   event.preventDefault()
   $('.signup').load("<%=  new_user_registration_url%>").hide();
-  $('.home').fadeOut(250, function(){
+$('.home').fadeOut(250, function(){
     $('.signup').fadeIn(500);
   });
 });
 
 </script>
 
+  

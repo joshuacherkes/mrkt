@@ -9,7 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     
     def after_sign_in_path_for(user)
-      match_user_url
+      dashboard_user_url
     end
 
     def create

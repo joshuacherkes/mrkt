@@ -1,37 +1,126 @@
 <h1>Edit Your Listing</h1>
 
 
-<form action="<%= job_url(@job)%>" method="post">
+<form action="<%= profile_url(@profile)%>" method="post">
   <input type=hidden name="_method" value="put">
-  <label for="job[team_name]">Which team are you Hiring for?</label>
-  <input type="text" name="job[team_name]" value="<%= @job.team_name %> ">
-  <label for"job[description]">Nobody wants to work for a lame team, why is your's awesome?</label>
-  <textarea name="job[description]"><%= @job.description %></textarea>
+  <label for="profile[name]">Name</label>
+  <input type="text" name="profile[name]" value="<%= @profile.name %> ">
+  <label for"profile[description]">Why you're awesome:</label>
+  <textarea name="profile[description]"><%= @profile.description %></textarea>
 
+<h1> Remove Skills</h1>
   <% @skills.each do |skill| %>
-    <% html_id = "job_skill_ids_#{skill.id}" %>
+    <% html_id = "profile_skills_ids_#{skill.id}" %>
     <label for="<%= html_id %>">
       <%= skill.title %>
     </label>
     <input 
     type="checkbox"
-    name="job[skill_ids][]"
+    name="profile[skill_ids][]"
     value="<%= skill.id %>"
     id="<%= html_id %>"
-    checked>
+    >
 
     <% end %>
 
-  <h2> Skill not listed?</h2>
+  <h2> Add More skills</h2>
+  <p>type all the skills you have below</p>
+  <%# skill partial will go in here %>
+<ul id="listview" data-role="listview">
+  <li>
+    <!-- <div data-role="fieldcontain"> -->
+      <!-- <label for="job_skills_attributes_0_title">Custom Skill</label> -->
+      <input 
+      type="text" 
+      name="skills_attributes[0][title]"
+      id="profile_skills_attributes_0_title">
+      <input type="range" 
+      name="profileskills_attributes[0][intensity]" 
+      id="profile_skills_attributes_0_intensity" 
+      value="5" 
+      min="0" 
+      max="10"
+      data-highlight='true'>
+    <!-- </div> -->  
+  </li>
+</ul>
+<a data-role="button" id="add_element">Add Another Skill</a>
+
+
+
+
+<h1> Remove companies</h1>
+  <% @companies.each do |company| %>
+    <% html_id = "profile_company_ids_#{company.id}" %>
+    <label for="<%= html_id %>">
+      <%= company.name %>
+    </label>
+    <input 
+    type="checkbox"
+    name="profile[company_ids][]"
+    value="<%= company.id %>"
+    id="<%= html_id %>"
+    >
+    <% end %>
+
+  <h2>Add Companies </h2>
   <p>that's ok, type all the skills you need below</p>
   <%# skill partial will go in here %>
-  <%= render :partial => "skills" %>
-
+  <div id="companies-list">
+  <ul id="companies" data-role="listview">
+    <li>
+      <!-- <div data-role="fieldcontain"> -->
+        <!-- <label for="job_skills_attributes_0_title">Custom Skill</label> -->
+        <input 
+        type="text"
+        class="company-input" 
+        name="companies_attributes[0][name]"
+        id="profile_companies_attributes_0_name">
+        <input type="range" 
+        name="profilescompanies_attributes[0][intensity]" 
+        id="profile_companies_attributes_0_intensity" 
+        value="5" 
+        min="0" 
+        max="10"
+        data-highlight='true'>
+      <!-- </div> -->  
+    </li>
+  </ul>
+  </div>
+  <h1><a data-role="button" id="add_company_element">Add Another Company</a></h1>
 
   <input type="submit" value="Done">
 </form>
 
-<form action="<%= job_url(@job) %>" method="post">
+<form action="<%= profile_url(@profile) %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Listing">
 </form>
+
+
+<script type="text/javascript">
+//Adds a new skill element on click
+$('#add_element').click(function () {
+    var list = $('ul[data-role="listview"]');
+    var nextLi = ((list.children().length));
+    var li = "<li><input type='text' id='profile_skills_attributes_" + nextLi + "_title' name='skills_attributes[" + nextLi + "][title]'>";
+    var slider = "<input type='range' id='profile_skills_attributes_" + nextLi + "_intensity' name='profileskills_attributes[" + nextLi + "][intensity]' max='10' min='0' value='5' data-highlight='true'></li>";
+    var insert = li + slider
+    list.append(insert);
+    list.listview('refresh');
+    $('#listview').trigger('create');
+
+});
+
+$('#add_company_element').click(function () {
+    var list = $('ul[data-role="listview"]#companies');
+    var nextLi = ((list.children().length));
+    var li = "<li><input class='company-input' type='text' id='profile_companies_attributes_" + nextLi + "_name' name='companies_attributes[" + nextLi + "][name]'>";
+    var slider = "<input type='range' id='profile_companies_attributes_" + nextLi + "_intensity' name='profilescompanies_attributes[" + nextLi + "][intensity]' max='10' min='0' value='5' data-highlight='true'></li>";
+    var insert = li + slider
+    list.append(insert);
+    list.listview('refresh');
+    $('#companies').trigger('create');
+
+});
+</script>
