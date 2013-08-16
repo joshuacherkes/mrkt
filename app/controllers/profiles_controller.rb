@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
           company_id: made_company.id, 
           intensity: params[:profilescompanies_attributes]["#{index}"][:intensity]})
       end
-      redirect_to profile_url(@profile)
+      redirect_to dashboard_user_url
     else
       render :nothing => true, :status => 422
     end

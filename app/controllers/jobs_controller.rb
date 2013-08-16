@@ -1,7 +1,9 @@
-class JobsController < ApplicationController 
+class JobsController < ApplicationController
   before_filter :authenticate_employer!, :except => [:like, :dislike]
   before_filter :authenticate_user!, :only => [:like, :dislike]
+
   include ApplicationHelper
+
   def new
     if current_employer.jobs.length > 0
       render :new
@@ -11,7 +13,6 @@ class JobsController < ApplicationController
   end
 
   def create
-    #create job
     @employer = current_employer
     @job = Job.new(params[:job])
     @job.employer_id = @employer.id
@@ -60,13 +61,15 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.includes(:jobskills).find(params[:id])
-    @jobskills = @job.jobskills.includes(:skill)
-    render :show
+    @job = Job.includes({:jobskills => :skill}, :employer).find(params[:id])
+    @jobskills = @job.jobskills
+    if @job.employer != current_employer
+      not_found
+    end
   end
 
   def edit
-    @job = Job.find(params[:id])
+    @job = Job.includes(:skills).find(params[:id])
     @skills = @job.skills
   end
 

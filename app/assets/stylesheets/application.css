@@ -33,8 +33,14 @@ h2 {
 }
 */
 
+#skill-cloud {
+  
+}
+
 
 li {
-	list-style-type: none;
-	display:inline;
+  list-style-type: none;
+  display:inline;
+  text-align: center;
 }
+

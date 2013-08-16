@@ -9,6 +9,4 @@ class InitialController < ApplicationController
   		render :start
   	end
   end
-
-
 end

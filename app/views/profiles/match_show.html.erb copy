@@ -1,0 +1,62 @@
+<%= render :partial => "panel/panel" %>
+<h1><%= @profile.name %></h1>
+<h2><%= @profile.tagline %></h2>
+<h2>My Skills:</h2>
+<div class="skill-cloud">
+  <ul class="skill-cloud">
+  <% @profile.profileskills.each do |profileskill| %>
+  <li data-weight="<%= profileskill.intensity %>"><%= profileskill.skill.title %></li>
+  <% end -%>
+  </ul>
+</div>
+<div class="company-cloud">
+  <h2> I've worked for</h2>
+  <ul class="company-cloud">
+  <% @profile.profile_companies.each do |profilecompany| %>
+  <li data-weight="<%= profilecompany.intensity %>"><%= profilecompany.company.name %></li>
+  <% end -%>
+  </ul>
+</div>
+
+<h2>Hi there!</h2>
+<p><%= @profile.description %></p>
+
+
+<div data-role="footer" data-id="foo1" data-position="fixed">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="<%= dislike_profile_url(@profile)  %>" data-icon="minus">Pass</a></li>
+      <li><a href="<%= like_profile_url(@profile) %>"  data-icon="check">Like</a></li>
+    </ul>
+  </div><!-- /navbar -->
+</div><!-- /footer -->
+
+
+
+
+
+
+<script>
+
+$(document).ready(function(){
+  $.fn.tagcloud.defaults = {
+    size: {start: 14, end: 18, unit: 'pt'},
+    color: {start: '#cde', end: '#f52'}
+  };
+    $(function () {
+      $('.skill-cloud li').tagcloud();
+    });
+        $(function () {
+      $('.company-cloud li').tagcloud();
+    });    
+  function doLike(){
+      $.post("<%= like_profile_url(@profile) %>");  //Your values here..
+   }
+function doDislike(){
+      $.post("<%= dislike_profile_url(@profile) %>");  //Your values here..
+   }
+
+})
+
+</script>
+  
